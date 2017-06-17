@@ -54,7 +54,7 @@
           <div class="card-content">
             <div class="content">
               <div class="columns is-multiline">
-                <div class="column" v-for="task in backlog">
+                <div class="column is-12" v-for="task in backlog">
                   <div class="card">
                     <div class="card-content">
                       <div class="content">
@@ -87,7 +87,7 @@
           <div class="card-content">
             <div class="content">
               <div class="columns is-multiline">
-                <div class="column" v-for="task in todo">
+                <div class="column is-12" v-for="task in todo">
                   <div class="card">
                     <div class="card-content">
                       <div class="content">
@@ -120,7 +120,7 @@
           <div class="card-content">
             <div class="content">
               <div class="columns is-multiline">
-                <div class="column" v-for="task in doing">
+                <div class="column is-12" v-for="task in doing">
                   <div class="card">
                     <div class="card-content">
                       <div class="content">
@@ -153,7 +153,7 @@
           <div class="card-content">
             <div class="content">
               <div class="columns is-multiline">
-                <div class="column" v-for="task in done">
+                <div class="column is-12" v-for="task in done">
                   <div class="card">
                     <div class="card-content">
                       <div class="content">
@@ -186,6 +186,9 @@
           <p><strong>Point: </strong>{{taskDetails.point}}</p>
           <p><strong>Assignee: </strong>{{taskDetails.assignedTo}}</p>
         </section>
+        <footer class="modal-card-foot">
+          <a @click="destroy(taskDetails)" class="button is-primary is-outlined">Delete</a>
+        </footer>
       </div>
     </div>
     <div v-if="showEdit" @click="closeEdit" class="modal is-active">
@@ -298,6 +301,10 @@ export default {
       }
       this.showEdit = false
       this.editTask = {}
+    },
+    destroy: function (task) {
+      kanbanRef.child(task['.key']).remove()
+      this.showDetails = false
     }
   }
 }
