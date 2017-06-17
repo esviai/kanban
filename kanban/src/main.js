@@ -4,18 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// import Vuefire from 'vuefire'
-import BootstrapVue from 'bootstrap-vue'
+import Vuefire from 'vuefire'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-// Vue.use(Vuefire)
-Vue.use(BootstrapVue)
-
-import {
-  store
-} from './store/store'
+Vue.use(Vuefire)
 
 Vue.config.productionTip = false
 
@@ -23,9 +14,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  store,
   template: '<App/>',
-  components: {
-    App
-  }
+  components: { App }
 })
